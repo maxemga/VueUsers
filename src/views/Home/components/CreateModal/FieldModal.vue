@@ -1,0 +1,52 @@
+<template>
+  <app-input
+    v-if="item.type === input"
+    :placeholder="item.placeholder"
+    :value="item.value"
+    :label="item.label"
+    v-model="item.value"
+  />
+  <app-select
+    v-else
+    :value="item.value"
+    :label="item.label"
+    v-model="item.value"
+  >
+    <option :value="null">Нет начальника</option>
+    <option v-for="user of users" :key="user.name" :value="user.id">{{
+      user.name
+    }}</option>
+  </app-select>
+</template>
+
+<script>
+import AppInput from '@/components/AppInput.vue'
+import AppSelect from '@/components/AppSelect.vue'
+
+export default {
+  name: 'FieldModal',
+  components: { AppInput, AppSelect },
+  inject: ['users'],
+  props: {
+    item: {
+      value: {
+        required: true,
+      },
+      placeholder: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+      type: {
+        type: String,
+        default: 'input',
+      },
+    },
+  },
+}
+</script>
+
+<style scoped></style>

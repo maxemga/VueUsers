@@ -1,0 +1,8 @@
+@import './reset.css';
+@import './globals.css';
+@import './colors.css';
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  color: #2c3e50;
+}
