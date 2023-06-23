@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import AppModal from '@/components/AppModal.vue'
-import AppButton from '@/components/AppButton.vue'
-import AppInput from '@/components/AppInput.vue'
+import AppModal from '@/ui/AppModal.vue'
+import AppButton from '@/ui/AppButton.vue'
+import AppInput from '@/ui/AppInput.vue'
 import FieldModal from './FieldModal.vue'
 import { saveLocalStorage, USERS_KEY } from '@/utils'
 

@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import AppInput from '@/components/AppInput.vue'
-import AppSelect from '@/components/AppSelect.vue'
+import AppInput from '@/ui/AppInput.vue'
+import AppSelect from '@/ui/AppSelect.vue'
 
 export default {
   name: 'FieldModal',

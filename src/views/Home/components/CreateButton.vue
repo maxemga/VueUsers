@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import AppButton from '../../../components/AppButton.vue'
+import AppButton from '@/ui/AppButton.vue'
+
 export default {
   components: { AppButton },
   name: 'ButtonCreate',

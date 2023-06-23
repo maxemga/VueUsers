@@ -12,6 +12,7 @@
 
 <script>
 import PlusIcon from '@/assets/icons/PlusIcon.vue'
+
 export default {
   components: { PlusIcon },
   name: 'Row',

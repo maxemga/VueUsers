@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import AppButton from '@/components/AppButton.vue'
-import AppModal from '@/components/AppModal.vue'
+import AppButton from '@/ui/AppButton.vue'
+import AppModal from '@/ui/AppModal.vue'
 import CreateModal from './components/CreateModal/App.vue'
 import CreateButton from './components/CreateButton.vue'
 import List from './components/Table/App.vue'

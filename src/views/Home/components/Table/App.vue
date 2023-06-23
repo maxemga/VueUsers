@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import AppEmpty from '@/components/AppEmpty.vue'
+import AppEmpty from '@/ui/AppEmpty.vue'
 import TableHeader from './Header.vue'
 import Row from './Row.vue'
-import { sortByName, getLocalStorage, USERS_KEY } from '@/utils'
+import { sortByName } from '@/utils'
 
 export default {
   components: { TableHeader, Row, AppEmpty },
