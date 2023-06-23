@@ -13,7 +13,7 @@
     v-model="item.value"
   >
     <option :value="null">Нет начальника</option>
-    <option v-for="user of users" :key="user.name" :value="user.id">{{
+    <option v-for="user of users" :key="user.id" :value="user.id">{{
       user.name
     }}</option>
   </app-select>
