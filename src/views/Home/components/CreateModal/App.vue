@@ -17,7 +17,12 @@ import AppButton from '@/ui/AppButton.vue'
 import AppInput from '@/ui/AppInput.vue'
 import AppSelect from '@/ui/AppSelect.vue'
 import FieldModal from './FieldModal.vue'
-import { saveLocalStorage, USERS_KEY, USER_FIELD_VALUES } from '@/utils'
+import {
+  saveLocalStorage,
+  USERS_KEY,
+  USER_FIELD_VALUES,
+  findUserById,
+} from '@/utils'
 
 export default {
   name: 'CreateModal',
@@ -39,14 +44,18 @@ export default {
   },
   methods: {
     createUser() {
+      const nameValue = this.values[0].value
+      const phoneValue = this.values[1].value
+      const bossValue = this.values[2].value
+
       const user = {
         id: Math.random(),
-        name: this.values[0].value,
-        phone: this.values[1].value,
+        name: nameValue,
+        phone: phoneValue,
         childs: [],
       }
 
-      if (!this.values[2].value) {
+      if (!bossValue) {
         this.users.push(user)
         saveLocalStorage(USERS_KEY, this.users)
 
@@ -56,9 +65,7 @@ export default {
         return
       }
 
-      const boss = this.users.find(
-        (el) => el.id === Number(this.values[2].value),
-      )
+      const boss = findUserById(this.users, Number(bossValue))
       boss.childs.push(user)
       saveLocalStorage(USERS_KEY, this.users)
 

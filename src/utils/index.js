@@ -1,4 +1,6 @@
 export * from './constants'
 export { getLocalStorage } from './getLocalStorage'
 export { saveLocalStorage } from './saveLocalStorage'
+export { getFlatUsers } from './getFlatUsers'
+export { findUserById } from './findUserById'
 export { sortByName } from './sortByName'
