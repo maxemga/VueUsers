@@ -1,0 +1,36 @@
+<template>
+  <svg
+    version="1.1"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:svgjs="http://svgjs.com/svgjs"
+    :width="size"
+    :height="size"
+    x="0"
+    y="0"
+    viewBox="0 0 121.805 121.804"
+    style="enable-background:new 0 0 512 512"
+    xml:space="preserve"
+    class=""
+  >
+    <g>
+      <path
+        d="M7.308 68.211h107.188a7.309 7.309 0 0 0 7.309-7.31 7.308 7.308 0 0 0-7.309-7.309H7.308a7.31 7.31 0 0 0 0 14.619z"
+        fill="#000000"
+        data-original="#000000"
+        class=""
+      ></path>
+    </g>
+  </svg>
+</template>
+
+<script>
+export default {
+  name: 'MinusIcon',
+  props: {
+    size: {
+      type: Number,
+      default: 20,
+    },
+  },
+}
+</script>

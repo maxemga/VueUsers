@@ -1,21 +1,40 @@
 <template>
-  <div class="row" :class="{ row__title: isTitle }" @click="$emit('click')">
-    <div class="row-item">
-      <div class="row-icon" v-if="hasChilds">
-        <plus-icon />
+  <div>
+    <div class="row" :class="{ row__title: isTitle }" @click="$emit('click')">
+      <div class="row-item">
+        <icon
+          :hasChilds="hasChilds"
+          :handleVisible="handleVisible"
+          :isOpen="isOpen"
+        />
+
+        {{ user.name }}
       </div>
-      {{ user.name }}
+
+      <div class="row-item">{{ user.phone }}</div>
     </div>
-    <div class="row-item">{{ user.phone }}</div>
+
+    <row
+      v-if="isOpen"
+      v-for="child of user.childs"
+      :key="child.id"
+      :user="child"
+      :hasChilds="child.childs.length"
+    />
   </div>
 </template>
 
 <script>
-import PlusIcon from '@/assets/icons/PlusIcon.vue'
+import Icon from './Icon.vue'
 
 export default {
-  components: { PlusIcon },
   name: 'Row',
+  components: { Icon },
+  data() {
+    return {
+      isOpen: false,
+    }
+  },
   props: {
     user: {
       id: {
@@ -41,6 +60,11 @@ export default {
       default: false,
     },
   },
+  methods: {
+    handleVisible() {
+      this.isOpen = !this.isOpen
+    },
+  },
   emits: ['click'],
 }
 </script>
@@ -48,16 +72,6 @@ export default {
 <style scope>
 .row {
   display: flex;
-}
-
-.row-icon {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .row__title {
