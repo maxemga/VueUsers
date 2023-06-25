@@ -15,32 +15,17 @@
 import AppModal from '@/ui/AppModal.vue'
 import AppButton from '@/ui/AppButton.vue'
 import AppInput from '@/ui/AppInput.vue'
+import AppSelect from '@/ui/AppSelect.vue'
 import FieldModal from './FieldModal.vue'
-import { saveLocalStorage, USERS_KEY } from '@/utils'
+import { saveLocalStorage, USERS_KEY, USER_FIELD_VALUES } from '@/utils'
 
 export default {
   name: 'CreateModal',
-  components: { AppModal, AppButton, AppInput, FieldModal },
+  components: { AppModal, AppButton, AppInput, FieldModal, AppSelect },
   inject: ['users'],
   data() {
     return {
-      values: [
-        {
-          label: 'Имя',
-          placeholder: 'Введите имя',
-          value: '',
-        },
-        {
-          label: 'Телефон',
-          placeholder: 'Введите телефон',
-          value: '',
-        },
-        {
-          label: 'Начальник',
-          value: null,
-          type: 'select',
-        },
-      ],
+      values: USER_FIELD_VALUES,
     }
   },
   props: {

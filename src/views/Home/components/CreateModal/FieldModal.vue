@@ -1,6 +1,6 @@
 <template>
   <app-input
-    v-if="item.type === input"
+    v-if="!item.isSelect"
     :placeholder="item.placeholder"
     :value="item.value"
     :label="item.label"
@@ -27,25 +27,7 @@ export default {
   name: 'FieldModal',
   components: { AppInput, AppSelect },
   inject: ['users'],
-  props: {
-    item: {
-      value: {
-        required: true,
-      },
-      placeholder: {
-        type: String,
-        required: true,
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      type: {
-        type: String,
-        default: 'input',
-      },
-    },
-  },
+  props: ['item'],
 }
 </script>
 
