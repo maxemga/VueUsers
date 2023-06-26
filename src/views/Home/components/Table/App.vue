@@ -32,12 +32,13 @@ export default {
   data() {
     return {
       isSort: false,
-      sortedArr: [],
     }
   },
   computed: {
     sortedUsers() {
-      return this.isSort ? this.sortedArr : addLevelToUsers(this.users)
+      return this.isSort
+        ? sortByName([...this.users])
+        : addLevelToUsers(this.users)
     },
     isUsersEmpty() {
       return this.users.length === 0
@@ -45,13 +46,7 @@ export default {
   },
   methods: {
     handleSort() {
-      if (!this.isSort) {
-        this.isSort = true
-        this.sortedArr = sortByName([...this.users])
-        return
-      }
-
-      this.isSort = false
+      this.isSort = !this.isSort
     },
   },
 }

@@ -1,7 +1,14 @@
 <template>
   <div>
     <div class="row" :class="{ row__title: isTitle }" @click="$emit('click')">
-      <div class="row-item" :style="{ left: `${user.level * 20}px` }">
+      <div
+        class="row-item"
+        :style="{
+          left: `${user.level * 20}px`,
+          cursor: hasChilds ? 'pointer' : 'auto',
+        }"
+        @click="handleSort"
+      >
         <icon
           v-if="hasChilds"
           :handleVisible="handleVisible"
@@ -11,12 +18,14 @@
         {{ user.name }}
       </div>
 
-      <div class="row-item">{{ user.phone }}</div>
+      <div class="row-item">
+        {{ user.phone }}
+      </div>
     </div>
 
     <row
       v-if="isOpen"
-      v-for="child of user.childs"
+      v-for="child of sortedUsers"
       :key="child.id"
       :user="child"
       :hasChilds="child.childs.length"
@@ -26,6 +35,7 @@
 
 <script>
 import Icon from './Icon.vue'
+import { sortByName } from '@/utils'
 
 export default {
   name: 'Row',
@@ -33,7 +43,22 @@ export default {
   data() {
     return {
       isOpen: false,
+      isSort: false,
     }
+  },
+  methods: {
+    handleSort() {
+      if (!this.hasChilds) return
+      this.isSort = !this.isSort
+    },
+    handleVisible() {
+      this.isOpen = !this.isOpen
+    },
+  },
+  computed: {
+    sortedUsers() {
+      return this.isSort ? sortByName([...this.user.childs]) : this.user.childs
+    },
   },
   props: {
     user: {
@@ -58,14 +83,6 @@ export default {
     isTitle: {
       type: Boolean,
       default: false,
-    },
-  },
-  methods: {
-    log() {
-      console.log(1)
-    },
-    handleVisible() {
-      this.isOpen = !this.isOpen
     },
   },
   emits: ['click'],
