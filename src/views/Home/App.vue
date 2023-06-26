@@ -33,7 +33,10 @@ export default {
     }
   },
   mounted() {
-    this.users.push(...getLocalStorage(USERS_KEY))
+    const users = getLocalStorage(USERS_KEY)
+
+    if (!users) return
+    this.users.push(...users)
   },
   methods: {
     handleClose() {

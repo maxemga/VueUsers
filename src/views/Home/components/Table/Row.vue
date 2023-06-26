@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="row" :class="{ row__title: isTitle }" @click="$emit('click')">
-      <div class="row-item">
+      <div class="row-item" :style="{ left: `${user.level * 20}px` }">
         <icon
-          :hasChilds="hasChilds"
+          v-if="hasChilds"
           :handleVisible="handleVisible"
           :isOpen="isOpen"
         />
@@ -61,6 +61,9 @@ export default {
     },
   },
   methods: {
+    log() {
+      console.log(1)
+    },
     handleVisible() {
       this.isOpen = !this.isOpen
     },

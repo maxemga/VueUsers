@@ -1,5 +1,5 @@
 <template>
-  <div class="icon" v-if="hasChilds" @click="handleVisible">
+  <div class="icon" @click="handleVisible">
     <minus-icon v-if="isOpen" />
     <plus-icon v-else />
   </div>
@@ -13,9 +13,6 @@ export default {
   name: 'TableIcon',
   components: { PlusIcon, MinusIcon },
   props: {
-    hasChilds: {
-      required: true,
-    },
     isOpen: {
       type: Boolean,
       required: true,

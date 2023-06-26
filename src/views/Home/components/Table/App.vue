@@ -23,7 +23,7 @@
 import AppEmpty from '@/ui/AppEmpty.vue'
 import TableHeader from './Header.vue'
 import Row from './Row.vue'
-import { sortByName } from '@/utils'
+import { sortByName, addLevelToUsers } from '@/utils'
 
 export default {
   components: { TableHeader, Row, AppEmpty },
@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     sortedUsers() {
-      return this.isSort ? this.sortedArr : this.users
+      return this.isSort ? this.sortedArr : addLevelToUsers(this.users)
     },
     isUsersEmpty() {
       return this.users.length === 0
@@ -45,7 +45,6 @@ export default {
   },
   methods: {
     handleSort() {
-      console.log(this.users)
       if (!this.isSort) {
         this.isSort = true
         this.sortedArr = sortByName([...this.users])
