@@ -5,7 +5,7 @@
         class="row-item"
         :style="{
           left: `${user.level * 20}px`,
-          cursor: hasChilds ? 'pointer' : 'auto',
+          cursor: hasChilds || isTitle ? 'pointer' : 'auto',
         }"
         @click="handleSort"
       >
@@ -23,13 +23,14 @@
       </div>
     </div>
 
-    <row
-      v-if="isOpen"
-      v-for="child of sortedUsers"
-      :key="child.id"
-      :user="child"
-      :hasChilds="child.childs.length"
-    />
+    <template v-if="isOpen">
+      <row
+        v-for="child of _sortedUsers"
+        :key="child.id"
+        :user="child"
+        :hasChilds="child.childs.length"
+      />
+    </template>
   </div>
 </template>
 
@@ -89,7 +90,7 @@ export default {
 }
 </script>
 
-<style scope>
+<style scoped>
 .row {
   display: flex;
 }
